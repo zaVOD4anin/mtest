@@ -5,3 +5,5 @@ print(type(' '.join(source)))
 hello()
 num1 = num2 = [5]
 print(num1 + num2, 'абоба')
+for i in range(3):
+    print(i)
