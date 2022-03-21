@@ -1,11 +1,11 @@
 from random import randint
 
 
-def method_1(k: int):
+def method_1(sum_num: int):
     '''
     вернуть 2 числа сумма которых равна либо приближена к введенному числу
     ineration mode
-    :param k: integer number
+    :param sum_num: integer number
     :return: tuple 2 numbers
     '''
     nums = []
@@ -46,10 +46,10 @@ def recurs_bin_search(array: list, elem: int, start: int, end: int, i: int):
         return recurs_bin_search(array, elem, start + 1, mid - 1, i)
 
 
-def method_2(k):
+def method_2(sum_num: int):
     '''
     method 2 to find with binary search without nearby sum numbers
-    :param k: int
+    :param sum_num: int
     :return:
     '''
     nums = []
@@ -59,12 +59,12 @@ def method_2(k):
     print(nums)
     for i in range(len(nums)):
         low, max = i + 1, len(nums) - 1
-        num1 = k - nums[i]
+        num1 = sum_num - nums[i]
         #      while low <= max:
         #          mid = (max - low) // 2
         #          if num1 == nums[mid] or num1 == nums[low] or num1 == nums[max]:
         #              return (nums[i], num1)
-        #          elif k > nums[mid] + nums[i]:
+        #          elif sum_num > nums[mid] + nums[i]:
         #              low = mid + 1
         #              max -= 1
         #          else:
@@ -77,5 +77,27 @@ def method_2(k):
     return ()
 
 
+def method_3(sum_num: int):
+    '''
+    возвращает два числа сумма которых передается в метод
+    :param sum_num:
+    :return:
+    '''
+    nums = []
+    for i in range(5):
+        nums.append(randint(-15, 15))
+    nums.sort()
+    first, second = 0, len(nums) - 1
+    print(nums)
+    while first < second:
+        iter_sum = nums[first] + nums[second]
+        if sum_num == iter_sum:
+            return (nums[first], nums[second])
+        elif iter_sum > sum_num:
+            second -= 1
+        else:
+            first += 1
+    return ()
+
 if __name__ == '__main__':
-    print(method_2(5))
+    print(method_3(5))
